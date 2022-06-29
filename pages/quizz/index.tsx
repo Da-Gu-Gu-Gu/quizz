@@ -1,5 +1,5 @@
 import type { NextPage, } from 'next'
-import { useEffect,useState,useRef } from 'react'
+import { useEffect,useState } from 'react'
 import Finish from '../components/Finish';
 import axios from 'axios'
 import Seo from '../components/Seo';
@@ -24,9 +24,8 @@ interface IState{
     score:number,
 }
 
-const quizz: NextPage = () => {
+const quizz = () => {
 
-    const progressRef=useRef(null)
 
     const [state,setState]=useState<IState>({
         index:0,
@@ -124,7 +123,7 @@ callApi()
             (
          <div className="lg:w-1/2 h-full text-xl mt-5 tracking-widest text-yellow-500 md:w-3/4 w-[90%] mx-auto ">
             Question {index+1}/10
-        <div ref={progressRef} className='bg-pink-500 w-full h-1 my-3 rounded-md'></div>
+        <div className='bg-pink-500 w-full h-1 my-3 rounded-md'></div>
         <p className='text-white'>{question}</p>
         <div className='answer h-[300px] mt-5 p-5 gap-5 rounded-lg w-full bg-white flex flex-col '>
             {answer.map((x,i)=>
