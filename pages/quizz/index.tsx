@@ -24,7 +24,7 @@ interface IState{
     score:number,
 }
 
-const quizz = () => {
+const quizz:React.FC = () => {
 
 
     const [state,setState]=useState<IState>({
