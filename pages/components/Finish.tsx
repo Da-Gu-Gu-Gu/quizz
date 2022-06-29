@@ -27,7 +27,7 @@ const Finish:React.FC<IProps>= ({score,myanswer,correctanswer}) => {
             <p className="font-semibold text-left w-1/2">Your'Answer</p>
             <p  className="font-semibold text-left w-1/2">Correct Answer</p>
         </div>
-        {myanswer.map((x,i)=>
+        {myanswer?.map((x,i)=>
         <div key={i.toString()} className="w-full flex justify-between mt-3 gap-3 ">
             <p className="w-8">{i+1}</p>
             <p className=" w-1/2 text-left ">{x}</p>
