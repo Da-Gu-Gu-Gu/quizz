@@ -24,7 +24,7 @@ interface IState{
     score:number,
 }
 
-const quizz:React.FC = () => {
+const Quizz:React.FC = () => {
 
 
     const [state,setState]=useState<IState>({
@@ -143,4 +143,4 @@ callApi()
   )
 }
 
-export default quizz
+export default Quizz
