@@ -1,5 +1,8 @@
 import type { NextPage, } from 'next'
 import { useEffect,useState,useRef } from 'react'
+import Finish from '../components/Finish';
+import axios from 'axios'
+import Seo from '../components/Seo';
 
 interface IState{
     index:number,
@@ -24,10 +27,6 @@ interface IState{
 const quizz: NextPage = () => {
 
     const progressRef=useRef(null)
-// console.log(progressRef?.current)
-    // const progress=(timeleft:Number,timetotal:Number,progressRef.current)=>{
-        
-    // }
 
     const [state,setState]=useState<IState>({
         index:0,
@@ -55,13 +54,15 @@ const quizz: NextPage = () => {
 
     useEffect(()=>{
  
-    let apiCategory=localStorage.getItem("category")
-    if(!apiCategory){
-        apiCategory="9"
-    }
+ 
      const callApi=async()=>{
-     let api=await fetch(`https://opentdb.com/api.php?amount=10&category=${apiCategory}&type=multiple`)
-    let data=await api.json()
+        let apiCategory= localStorage.getItem("category")
+        if(!apiCategory){
+            apiCategory="9"
+        }
+     let response=await axios.get(`https://opentdb.com/api.php?amount=10&category=${Number(apiCategory)}&type=multiple`)
+     let data=await response.data
+     console.log(data)
      setState({
                 ...state,
                 all:data.results,
@@ -110,6 +111,9 @@ callApi()
     }
     }
   return (
+    <>
+    <Seo />
+
     <div className='bg-violet-800 min-h-screen h-full m-0 p-5  w-screen'>
        {loading?
        (
@@ -132,17 +136,11 @@ callApi()
         </div>
         )
         :(
-            <p>{score}</p>
-        
-        // correctanswer.map((x,i)=>
-        //  <p className='' key={i.toString()}>{x}</p>
-        // )
-    //     correctanswer.map((x,i)=>
-    //     <p className='' key={i.toString()}>{x}</p>
-    //    )
+            <Finish score={score} myanswer={myanswer} correctanswer={correctanswer}/>      
         )
        }
     </div>
+    </>
   )
 }
 
