@@ -22,17 +22,17 @@ const Home: NextPage = () => {
         <div className='bg-violet-800 h-screen m-0 p-5  w-screen'>
           <h2 className='text-center text-3xl text-white font-bold py-5 tracking-widest'>Guu Quizz</h2>
             <div className='lg:w-1/2 md:w-3/4 w-[90%] mx-auto rounded-lg bg-white h-[85%] gap-5  p-5 flex flex-wrap'>
-              <Link href="/quizz">
-                <a className='md:w-[47%] w-[46%] text-white rounded-lg flex items-center justify-center h-[30%] flex-col bg-red-400'>
-                  <div className='p-2 mb-2 text-2xl text-white rounded-md bg-gray-300 bg-opacity-50'>
+              <Link href="/quizz" >
+                <a  className='md:w-[47%] w-[46%] text-white rounded-lg flex items-center justify-center h-[30%] flex-col bg-red-400'>
+                  <div onClick={()=>localStorage.setItem("category","9")} className='p-2 mb-2 text-2xl text-white rounded-md bg-gray-300 bg-opacity-50'>
                     <HiOutlineLightBulb />
                   </div>
                   General 
                 </a>
                 </Link>
-                <Link href="/quizz">
+                <Link href="/quizz" >
                 <a className='md:w-[47%] w-[46%] text-white rounded-lg flex items-center justify-center h-[30%] flex-col  bg-cyan-400'>
-                <div className='p-2 mb-2 text-2xl text-white rounded-md bg-gray-300 bg-opacity-50'>
+                <div onClick={()=>localStorage.setItem("category","12")} className='p-2 mb-2 text-2xl text-white rounded-md bg-gray-300 bg-opacity-50'>
                     <ImMusic />
                   </div>
                   Music
